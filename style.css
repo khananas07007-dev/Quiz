@@ -1,0 +1,78 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(250, 233, 211);
+    padding: 70px;
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 40px;
+    color: rgb(44, 42, 42);
+}
+
+input{
+    margin-bottom: 25px;
+    padding: 10px 15px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+#addBtn{
+    display: block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: none;
+    background-color: rgb(84, 84, 251);
+    color: white;
+    font-size: 25px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+#expenseList{
+    margin-top: 20px;
+}
+
+.expensive{
+    background-color: #eeeeee;
+    padding: 14px;
+    margin-bottom: 12px;
+    border-radius: 5px;
+}
+
+#expenseList p{
+    margin-bottom: 4px;
+}
+
+#expenseList h2{
+    margin: 8px 0 2px 0;
+}
+
+.delete-Btn{
+    margin-top: 10px;
+    padding: 4px 7px;
+    border: none;
+    background-color: red;
+    color: white;
+    font-size: 17px;
+    border-radius: 5px;
+    cursor: pointer;
+}

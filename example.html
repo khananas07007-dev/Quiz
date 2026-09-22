@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Expense Tracker</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eeeeee;
+            padding-top: 70px;
+        }
+
+        .expense-box {
+            width: 450px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        #addBtn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #2878ff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #expenseList {
+            margin-top: 20px;
+        }
+
+        .expense {
+            background-color: #eeeeee;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        .expense p {
+            margin-bottom: 7px;
+        }
+
+        .delete-btn {
+            margin-top: 5px;
+            padding: 7px 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: red;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="expense-box">
+
+        <h1>Expense Tracker</h1>
+
+        <input
+            type="text"
+            id="itemInput"
+            placeholder="Item name"
+        >
+
+        <input
+            type="number"
+            id="priceInput"
+            placeholder="Price"
+        >
+
+        <input
+            type="number"
+            id="quantityInput"
+            placeholder="Quantity"
+        >
+
+        <button id="addBtn">Add Item</button>
+
+        <div id="expenseList"></div>
+
+    </div>
+
+
+    <script>
+        const itemInput = document.getElementById("itemInput");
+        const priceInput = document.getElementById("priceInput");
+        const quantityInput = document.getElementById("quantityInput");
+
+        const addBtn = document.getElementById("addBtn");
+        const expenseList = document.getElementById("expenseList");
+
+
+        addBtn.addEventListener("click", function () {
+
+            const itemName = itemInput.value;
+            const price = Number(priceInput.value);
+            const quantity = Number(quantityInput.value);
+
+
+            if (
+                itemName === "" ||
+                priceInput.value === "" ||
+                quantityInput.value === ""
+            ) {
+                alert("Please fill all fields");
+                return;
+            }
+
+
+            const itemTotal = price * quantity;
+
+
+            const expense = document.createElement("div");
+            expense.classList.add("expense");
+
+
+            const nameText = document.createElement("p");
+            nameText.innerText = "Item: " + itemName;
+
+
+            const priceText = document.createElement("p");
+            priceText.innerText = "Price: ₹" + price;
+
+
+            const quantityText = document.createElement("p");
+            quantityText.innerText = "Quantity: " + quantity;
+
+
+            const itemTotalText = document.createElement("p");
+            itemTotalText.innerText = "Item Total: ₹" + itemTotal;
+
+
+            const deleteBtn = document.createElement("button");
+
+            deleteBtn.innerText = "Delete";
+            deleteBtn.classList.add("delete-btn");
+
+
+            expense.appendChild(nameText);
+            expense.appendChild(priceText);
+            expense.appendChild(quantityText);
+            expense.appendChild(itemTotalText);
+            expense.appendChild(deleteBtn);
+
+
+            expenseList.appendChild(expense);
+
+
+            itemInput.value = "";
+            priceInput.value = "";
+            quantityInput.value = "";
+
+
+            deleteBtn.addEventListener("click", function () {
+
+                expense.remove();
+
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
