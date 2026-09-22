@@ -1,173 +1,50 @@
-const quiz = document.getElementById("quiz");
-const questionNumber = document.getElementById("questionNumber");
-const question = document.getElementById("question");
-const options = document.getElementById("options");
-const nextBtn = document.getElementById("nextBtn");
-const message = document.getElementById("message");
-const finalResult = document.getElementById("finalResult");
-const scoreText = document.getElementById("scoreText");
-const restartBtn = document.getElementById("restartBtn");
+const itemInput = document.getElementById("itemInput");
+const priceInput = document.getElementById("priceInput");
+const quantityInput = document.getElementById("quantityInput");
 
-const questions =[
-    {
-        question: "Which language makes a website interactive?",
-        options: [
-            "HTML",
-            "CSS",
-            "JavaScript",
-            "Photoshop"
-        ],
+const addBtn = document.getElementById("addBtn");
+const expenseList = document.getElementById("expenseList");
 
-        answer: "JavaScript"
-    },
-
-    {
-        question: "Which tag is used to add JavaScript in HTML?",
-        options:[
-            "<style>",
-            "<script>",
-            "<js>",
-            "<javascript>"
-        ],
-
-        answer: "<script>"
-
-    },
-
-    {
-        question: "Which keyword creates a variable in JavaScript?",
-        options: [
-            "let",
-            "style",
-            "html",
-            "link"
-        ],
-
-        answer: "let"
-    },
-
-    {
-        question: "Which method selects an element by ID?",
-        options: [
-            "getElementById",
-            "getClass",
-            "getHTML",
-            "selectId"
-        ],
-
-        answer: "getElementById"
-    },
-
-    {
-        question: "Which event is used for a button click?",
-        options: [
-            "hover",
-            "change",
-            "click",
-            "load"
-        ],
-
-        answer: "click"
+addBtn.addEventListener("click", function(){
+    if(itemInput.value === "" || priceInput.value === "" || quantityInput.value === ""){
+        alert("please fill all fields");
+        return;
     }
-];
 
-let currentQuestion = 0;
+    const itemTotal = priceInput.value * quantityInput.value;
 
-let score = 0;
+    const expensive = document.createElement("div");
+    expensive.classList.add("expensive");
 
-    function showQuestion() {
+    const itemText = document.createElement("p");
+    itemText.innerText = "Item: " + itemInput.value;
+    itemInput.value = "";
 
-            message.innerText = "";
-            options.innerHTML = "";
+    const priceText = document.createElement("p");
+    priceText.innerText = "Price: ₹" + priceInput.value;
+    priceInput.value = "";
 
-            questionNumber.innerText ="Question " +(currentQuestion + 1) + " of " + 
-            questions.length;
+    const quantityText = document.createElement("p");
+    quantityText.innerText = "Quantity: " + quantityInput.value;
+    quantityInput.value = "";
 
-            question.innerText = questions[currentQuestion].question;
+    const itemTotalText = document.createElement("h2");
+    itemTotalText.innerText = "Total: ₹" + itemTotal;
 
+    const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("delete-Btn");
+    deleteBtn.innerText = "Delete";
 
-            const currentOptions = questions[currentQuestion].options;
+    expensive.appendChild(itemText);
+    expensive.appendChild(priceText);
+    expensive.appendChild(quantityText);
+    expensive.appendChild(itemTotalText);
+    expensive.appendChild(deleteBtn);
 
+    expenseList.appendChild(expensive);
 
-            currentOptions.forEach(function (option) {
-
-                const optionBox = document.createElement("div");
-                optionBox.classList.add("option");
-
-                const radio = document.createElement("input");
-                radio.type = "radio";
-                radio.name = "answer";
-                radio.value = option;
-
-                const label = document.createElement("label");
-                label.innerText = option;
-
-                optionBox.appendChild(radio);
-                optionBox.appendChild(label);
-                options.appendChild(optionBox);
-
-            });
-
-
-            if (currentQuestion === questions.length - 1) {
-
-                nextBtn.innerText = "Finish Quiz";
-
-            } else {
-
-                nextBtn.innerText = "Next Question";
-
-            }
-
-        }
-
-
-        nextBtn.addEventListener("click", function () {
-
-            const selectedAnswer = document.querySelector('input[name="answer"]:checked' );
-
-            if (selectedAnswer === null) {
-
-                message.innerText =
-                    "Please select an answer";
-                return;
-            }
-
-            if (
-                selectedAnswer.value ===
-                questions[currentQuestion].answer
-            ) {
-                score = score + 1;
-
-            }
-
-            currentQuestion = currentQuestion + 1;
-            if (currentQuestion < questions.length) {
-                showQuestion();
-            } else {
-                showResult();
-            }
-        });
-
-
-        function showResult() {
-            quiz.style.display = "none";
-            finalResult.style.display = "block";
-
-            scoreText.innerText =
-                "Your Score: " +
-                score +
-                " / " +
-                questions.length;
-
-        }
-
-        restartBtn.addEventListener("click", function () {
-            currentQuestion = 0;
-            score = 0;
-            quiz.style.display = "block";
-            finalResult.style.display = "none";
-            showQuestion();
-        });
-
-        showQuestion();
+    deleteBtn.addEventListener("click", function(){
+        expensive.remove();
+    })
+    
+});

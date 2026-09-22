@@ -10,88 +10,69 @@ body{
     padding: 70px;
 }
 
-
-.quiz-box {
-    width: 500px;
+.box{
+    display: flex;
+    flex-direction: column;
+    width: 450px;
     margin: auto;
-    margin-top: 60px;
-    padding: 30px;
+    padding: 20px;
     background-color: white;
     border-radius: 10px;
 }
 
-h1 {
+h1{
     text-align: center;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-#questionNumber {
-    text-align: center;
-    color: #777;
     margin-bottom: 25px;
+    font-size: 40px;
+    color: rgb(44, 42, 42);
 }
 
-#question {
-    font-size: 21px;
-    margin-bottom: 20px;
+input{
+    margin-bottom: 25px;
+    padding: 10px 15px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 1px solid black;
 }
 
-.option {
+#addBtn{
+    display: block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: none;
+    background-color: rgb(84, 84, 251);
+    color: white;
+    font-size: 25px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+#expenseList{
+    margin-top: 20px;
+}
+
+.expensive{
     background-color: #eeeeee;
-    padding: 12px;
-    margin-bottom: 10px;
+    padding: 14px;
+    margin-bottom: 12px;
     border-radius: 5px;
 }
 
-.option input {
-    margin-right: 8px;
-    cursor: pointer;
+#expenseList p{
+    margin-bottom: 4px;
 }
 
-.option label {
-    cursor: pointer;
+#expenseList h2{
+    margin: 8px 0 2px 0;
 }
 
-#nextBtn {
-    width: 100%;
-    margin-top: 15px;
-    padding: 12px;
+.delete-Btn{
+    margin-top: 10px;
+    padding: 4px 7px;
     border: none;
-    border-radius: 5px;
-    background-color: #2878ff;
+    background-color: red;
     color: white;
-    font-size: 16px;
+    font-size: 17px;
+    border-radius: 5px;
     cursor: pointer;
 }
-
-#message {
-    text-align: center;
-    color: red;
-    margin-top: 15px;
-}
-
-#finalResult {
-    display: none;
-    text-align: center;
-}
-
-#finalResult h2 {
-    margin-bottom: 15px;
-}
-
-#scoreText {
-    font-size: 22px;
-    margin-bottom: 20px;
-}
-
-#restartBtn {
-    padding: 10px 25px;
-    border: none;
-    background-color: green;
-    color: white;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
