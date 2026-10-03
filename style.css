@@ -1,78 +1,143 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+ * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
 
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(250, 233, 211);
-    padding: 70px;
-}
 
-.box{
-    display: flex;
-    flex-direction: column;
-    width: 450px;
-    margin: auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-}
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(250, 233, 211);
+            
+           
+        }
 
-h1{
-    text-align: center;
-    margin-bottom: 25px;
-    font-size: 40px;
-    color: rgb(44, 42, 42);
-}
 
-input{
-    margin-bottom: 25px;
-    padding: 10px 15px;
-    font-size: 20px;
-    border-radius: 5px;
-    border: 1px solid black;
-}
+       
+            
+        .box {
+            margin-top: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-#addBtn{
-    display: block;
-    margin-top: 10px;
-    padding: 10px 15px;
-    border: none;
-    background-color: rgb(84, 84, 251);
-    color: white;
-    font-size: 25px;
-    border-radius: 7px;
-    cursor: pointer;
-}
+        #quizBox{
+            background-color: white;
+            display: inline-block;
+            width: 500px;
+            padding: 30px 30px;
+            margin-bottom: 30px;
+            
+        }
 
-#expenseList{
-    margin-top: 20px;
-}
 
-.expensive{
-    background-color: #eeeeee;
-    padding: 14px;
-    margin-bottom: 12px;
-    border-radius: 5px;
-}
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #222;
+        }
 
-#expenseList p{
-    margin-bottom: 4px;
-}
 
-#expenseList h2{
-    margin: 8px 0 2px 0;
-}
+        #questionNumber {
+            text-align: center;
+            color: #777;
+            margin-bottom: 25px;
+        }
 
-.delete-Btn{
-    margin-top: 10px;
-    padding: 4px 7px;
-    border: none;
-    background-color: red;
-    color: white;
-    font-size: 17px;
-    border-radius: 5px;
-    cursor: pointer;
-}
+
+        #question {
+            font-size: 21px;
+            margin-bottom: 20px;
+            color: black;
+        }
+
+
+        .option {
+            background-color: #eeeeee;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: left;
+        }
+
+
+        .option:hover {
+            background-color: #dddddd;
+        }
+
+
+        .option input {
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+
+        .option label {
+            cursor: pointer;
+        }
+
+
+        #nextBtn {
+            width: 100%;
+            margin-top: 15px;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #2878ff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+
+        #nextBtn:hover {
+            background-color: #1265db;
+        }
+
+
+        #message {
+            text-align: center;
+            color: red;
+            margin-top: 15px;
+        }
+
+
+        #finalBox {
+            display: none;
+            text-align: center;
+            background-color: white;
+            width: 500px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+
+
+        #finalBox h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+
+        #scoreText {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+
+        #restartBtn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            background-color: green;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+
+        #restartBtn:hover {
+            background-color: darkgreen;
+        }

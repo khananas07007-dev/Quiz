@@ -1,50 +1,151 @@
-const itemInput = document.getElementById("itemInput");
-const priceInput = document.getElementById("priceInput");
-const quantityInput = document.getElementById("quantityInput");
+const quizBox = document.getElementById("quizBox");
+const questionNumber = document.getElementById("questionNumber");
+const question = document.getElementById("question");
+const options = document.getElementById("options");
+const nextBtn = document.getElementById("nextBtn");
+const message = document.getElementById("message");
 
-const addBtn = document.getElementById("addBtn");
-const expenseList = document.getElementById("expenseList");
+const finalBox = document.getElementById("finalBox");
+const scoreText = document.getElementById("scoreText");
+const restartBtn = document.getElementById("restartBtn");
 
-addBtn.addEventListener("click", function(){
-    if(itemInput.value === "" || priceInput.value === "" || quantityInput.value === ""){
-        alert("please fill all fields");
-        return;
-    }
+const questions = [
+   {
+      question: "Which language makes a website interactive?",
+      options: [
+         "HTML",
+         "CSS",
+         "JavaScript",
+         "Photoshop"
+      ], 
+      answer: "JavaScript"
+   },
 
-    const itemTotal = priceInput.value * quantityInput.value;
+   {
+      question: "Which tag is used to add JavaScript in HTML?",
+      options: [
+         "<style>",
+         "<script>",
+         "<js>",
+         "<javascript>"
+      ],
+      answer: "<script>"
+   },
 
-    const expensive = document.createElement("div");
-    expensive.classList.add("expensive");
+   {
+      question: "Which keyword creates a variable in JavaScript?",
+      options: [
+         "let",
+         "style",
+         "html",
+         "link"
+      ],
+      answer: "let"
+   },
 
-    const itemText = document.createElement("p");
-    itemText.innerText = "Item: " + itemInput.value;
-    itemInput.value = "";
+   {
+      question: "Which method selects an element by ID?",
+      options: [
+         "getElementById",
+         "getClass",
+         "getHTML",
+         "selectId"
+      ],
+      answer: "getElementById"
+   },
 
-    const priceText = document.createElement("p");
-    priceText.innerText = "Price: ₹" + priceInput.value;
-    priceInput.value = "";
+   {
+      question: "Which event is used for a button click?",
+      options: [
+         "hover",
+         "change",
+         "click",
+         "load"
+      ],
+      answer: "click"
+   }
+];
 
-    const quantityText = document.createElement("p");
-    quantityText.innerText = "Quantity: " + quantityInput.value;
-    quantityInput.value = "";
+let currentQuestion = 0;
+let score = 0;
 
-    const itemTotalText = document.createElement("h2");
-    itemTotalText.innerText = "Total: ₹" + itemTotal;
+function showQuestion(){
 
-    const deleteBtn = document.createElement("button");
-    deleteBtn.classList.add("delete-Btn");
-    deleteBtn.innerText = "Delete";
+   message.innerText = "";
+   options.innerHTML = "";
 
-    expensive.appendChild(itemText);
-    expensive.appendChild(priceText);
-    expensive.appendChild(quantityText);
-    expensive.appendChild(itemTotalText);
-    expensive.appendChild(deleteBtn);
+   questionNumber.innerText = "Questions " + (currentQuestion + 1) + " of " + questions.length;
 
-    expenseList.appendChild(expensive);
 
-    deleteBtn.addEventListener("click", function(){
-        expensive.remove();
-    })
-    
+   question.innerText = questions[currentQuestion].question;
+
+   const currentOptions = questions[currentQuestion].options;
+
+   currentOptions.forEach(function(option){
+
+      const optionBox = document.createElement("div");
+      optionBox.classList.add("option");
+
+      const radio = document.createElement("input");
+
+      radio.type = "radio";
+      radio.name = "answer";
+      radio.value = option;
+
+      const label = document.createElement("label");
+
+      label.innerText = option;
+
+      optionBox.appendChild(radio);
+      optionBox.appendChild(label);
+
+      options.appendChild(optionBox);
+   });
+
+   if(currentQuestion === questions.length - 1){
+      nextBtn.innerText = "Finish Quiz";
+   }else{
+      nextBtn.innerText = "Next Question";
+   }
+
+};
+
+nextBtn.addEventListener("click", function(){
+   const selectedAnswer = document.querySelector('input[name = "answer"]:checked');
+
+   if(selectedAnswer === null){
+      message.innerText = "Please select an answer";
+      return;
+   }
+
+   if(selectedAnswer.value === questions[currentQuestion].answer){
+      score++;
+   }
+
+   currentQuestion++;
+
+   if(currentQuestion < questions.length){
+      showQuestion();
+   }else{
+      showResult();
+   }
 });
+
+function showResult(){
+
+   quizBox.style.display = "none";
+   finalBox.style.display = "block";
+   scoreText.innerText = "Your Score: " + score + " / " + questions.length;
+}
+
+restartBtn.addEventListener("click", function(){
+   currentQuestion = 0;
+   score = 0;
+
+   quizBox.style.display = "block";
+   finalBox.style.display = "none";
+
+   showQuestion();
+});
+
+showQuestion();
